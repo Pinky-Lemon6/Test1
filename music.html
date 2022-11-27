@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+	<link rel="stylesheet" type="text/css" href="css/music.css" />
+  </head>
+  <body style="background-color: #ee9ca7;">
+    <div id="root" style="top: 50%;">
+      <!--添加音频播放，设置为自动播放,并隐藏播放控件的显示-->
+      <audio id="bgm" controls="controls" hidden="hidden" loop="loop">
+        <source src="./music/1.mp3" type="audio/mp3" />
+        <!-- <source src="./music/1.mp3" type="audio/ogg">
+			<embed height="50px" width="100px" src="./music/1.mp3"> -->
+      </audio>
+      <div id="button-container">
+        <button type="button" id="music-button">点我放BGM</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    function init() {
+      var button = document.getElementById("music-button");
+      button.addEventListener("click", clickButton);
+    }
+
+    function clickButton() {
+      var bgm = document.getElementById("bgm");
+      bgm.play();
+      console.log("play!");
+      unshow();
+    }
+
+    function unshow() {
+      var framesets =
+        window.parent.document.getElementsByTagName("frameset")[0];
+      framesets.setAttribute("rows", "100%,0");
+      console.log("unshow!");
+    }
+    init();
+  </script>
+</html>
